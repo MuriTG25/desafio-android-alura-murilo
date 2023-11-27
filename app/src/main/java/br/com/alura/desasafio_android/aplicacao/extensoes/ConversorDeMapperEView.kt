@@ -23,7 +23,7 @@ fun Usuario.usuarioParaView() = UsuarioView(
 
 fun RepositorioMapper.mapperParaRepositorio() = Repositorio(
     nome = this.nome ?: "",
-    descricao = this.descricao ?: "",
+    descricao = this.descricao,
 )
 fun RepositorioMapper.mapperParaView() = RepositorioView(
     nome = this.nome ?: "",

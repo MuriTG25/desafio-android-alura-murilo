@@ -6,7 +6,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import br.com.alura.desasafio_android.ui.component.CampoDeUsuarioComponents
 import br.com.alura.desasafio_android.ui.component.TelaDeCarregamentoComponent
 import br.com.alura.desasafio_android.ui.component.TelaDeFalhaComponent
-import br.com.alura.desasafio_android.ui.extensoes.usuarioDeTeste
+import br.com.alura.desasafio_android.ui.extensoes.usuarioParaVisualizacao
 import br.com.alura.desasafio_android.ui.stateholder.TelaDeUsuarioUiState
 import br.com.alura.desasafio_android.ui.theme.DesasafioandroidTheme
 
@@ -37,7 +37,7 @@ private fun TelaDeUsuarioScreenPreview() {
     DesasafioandroidTheme {
         Surface {
             TelaDeUsuarioScreen(
-                state = TelaDeUsuarioUiState.Sucesso(usuario = usuarioDeTeste)
+                state = TelaDeUsuarioUiState.Sucesso(usuario = usuarioParaVisualizacao)
             )
         }
     }

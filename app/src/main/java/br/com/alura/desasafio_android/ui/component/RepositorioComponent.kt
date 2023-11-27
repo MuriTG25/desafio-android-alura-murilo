@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.alura.desasafio_android.aplicacao.modelo.view.RepositorioView
-import br.com.alura.desasafio_android.ui.extensoes.repositorioDeTeste
+import br.com.alura.desasafio_android.ui.extensoes.repositorioParaVisualizacao
 
 @Composable
 fun RepositorioComponent(
@@ -49,5 +49,5 @@ fun RepositorioComponent(
 @Preview(showBackground = true)
 @Composable
 private fun RepositorioComponentPreview() {
-    RepositorioComponent(repositorio = repositorioDeTeste)
+    RepositorioComponent(repositorio = repositorioParaVisualizacao)
 }

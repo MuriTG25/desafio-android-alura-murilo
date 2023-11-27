@@ -5,6 +5,7 @@ import br.com.alura.desasafio_android.aplicacao.modelo.mapper.RepositorioMapper
 import br.com.alura.desasafio_android.aplicacao.modelo.mapper.UsuarioMapper
 import br.com.alura.desasafio_android.aplicacao.modelo.view.RepositorioView
 import br.com.alura.desasafio_android.aplicacao.modelo.view.UsuarioView
+import br.com.alura.desasafio_android.dominio.modelo.Repositorio
 import br.com.alura.desasafio_android.dominio.modelo.Usuario
 
 fun UsuarioMapper.mapperParaObjeto() = Usuario(
@@ -41,10 +42,21 @@ val nomeTeste = "José"
 val usuarioTeste = "jose1234"
 val descricaoTeste = LoremIpsum(30).values.first()
 
-val listaDeRepositoriosParaTesteCompleto = listOf<RepositorioView>(
-    RepositorioView("projeto 1", LoremIpsum(10).values.first()),
-    RepositorioView("projeto 2", LoremIpsum(30).values.first()),
-    RepositorioView("projeto 1", ""),
+val listaDeRepositoriosMapperParaTestes = listOf<RepositorioMapper>(
+    RepositorioMapper("projeto 1", LoremIpsum(10).values.first()),
+    RepositorioMapper("projeto 2"),
+    RepositorioMapper(),
 )
-val listaDeRepositoriosParaTesteSimples =
-    RepositorioView("projeto 1", LoremIpsum(10).values.first())
+val repositorioMapperParaTestes =
+    RepositorioMapper("projeto 1", LoremIpsum(10).values.first())
+
+val listaDeRepositoriosParaTestes = listOf<Repositorio>(
+    Repositorio("projeto 1", LoremIpsum(10).values.first()),
+    Repositorio("projeto 2")
+)
+val repositorioParaTestes =
+    Repositorio("projeto 1", LoremIpsum(10).values.first())
+
+val repositorioNome1 = "projeto 1"
+val repositorioNome2 = "projeto 2"
+val repositorioDescricao = LoremIpsum(10).values.first()

@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.alura.desasafio_android.aplicacao.modelo.view.RepositorioView
 import br.com.alura.desasafio_android.aplicacao.modelo.view.UsuarioView
-import br.com.alura.desasafio_android.ui.extensoes.listaDeRepositoriosDeTeste
-import br.com.alura.desasafio_android.ui.extensoes.usuarioDeTeste
+import br.com.alura.desasafio_android.ui.extensoes.listaDeRepositoriosParaVisualizacao
+import br.com.alura.desasafio_android.ui.extensoes.usuarioParaVisualizacao
 import br.com.alura.desasafio_android.ui.extensoes.margemPadrao
 import br.com.alura.desasafio_android.ui.extensoes.tamanhoDaCaixa
 import br.com.alura.desasafio_android.ui.theme.DesasafioandroidTheme
@@ -100,8 +100,8 @@ private fun CampoDeUsuarioComponentsPreview() {
     DesasafioandroidTheme {
         Surface {
             CampoDeUsuarioComponents(
-                usuario = usuarioDeTeste,
-                listaDeRepositorios = listaDeRepositoriosDeTeste
+                usuario = usuarioParaVisualizacao,
+                listaDeRepositorios = listaDeRepositoriosParaVisualizacao
             )
         }
     }
