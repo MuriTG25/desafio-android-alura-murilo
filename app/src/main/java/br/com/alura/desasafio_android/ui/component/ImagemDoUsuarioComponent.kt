@@ -23,7 +23,7 @@ fun ImagemDoUsuarioComponent(
             .size(tamanhoDaCaixa)
             .clip(CircleShape),
         model = url,
-        contentDescription = null,
+        contentDescription = "imagem do usuario",
         contentScale = ContentScale.Crop,
         placeholder = painterResource(id = R.drawable.ic_image_not_found),
         error = painterResource(id = R.drawable.ic_image_not_found),
