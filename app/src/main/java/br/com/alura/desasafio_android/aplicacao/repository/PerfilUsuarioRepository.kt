@@ -6,6 +6,8 @@ import br.com.alura.desasafio_android.dominio.modelo.Usuario
 import br.com.alura.desasafio_android.infraestrutura.webservice.PerfilUsuarioService
 import br.com.alura.desasafio_android.ui.extensoes.usuarioDeErro
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flow
 import java.net.UnknownHostException
 import javax.inject.Inject
@@ -16,23 +18,25 @@ class PerfilUsuarioRepository @Inject constructor(
     private val perfilUsuarioService: PerfilUsuarioService
         ){
     suspend fun pegaUsuario(id:String): Flow<Usuario> {
-        val usuario =  try {
-           perfilUsuarioService.pegaUsuario(id)?.mapperParaObjeto() ?: usuarioDeErro
-        } catch (e: UnknownHostException) {
-           usuarioDeErro
-        }
         return flow {
-            emit(usuario)
+            emit(
+                perfilUsuarioService.pegaUsuario(id)?.mapperParaObjeto() ?: usuarioDeErro
+            )
+        }.catch { e->
+            if(e is UnknownHostException){
+                emit(usuarioDeErro)
+            }
         }
     }
     suspend fun pegaListaRepositorio(id:String): Flow<List<RepositorioMapper>>{
-        val lista =  try {
-            perfilUsuarioService.pegaListaRepositorio(id)
-        } catch (e: UnknownHostException) {
-            emptyList()
-        }
         return flow {
-            emit(lista)
+            emit(
+                perfilUsuarioService.pegaListaRepositorio(id)
+            )
+        }.catch { e->
+            if(e is UnknownHostException){
+                emit(emptyList())
+            }
         }
     }
 }
