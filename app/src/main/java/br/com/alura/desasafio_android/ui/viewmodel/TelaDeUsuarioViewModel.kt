@@ -13,6 +13,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -43,16 +44,16 @@ class TelaDeUsuarioViewModel @Inject constructor(
                 if (usuario == usuarioDeErro) {
                     falhaDeCarregamento()
                 } else {
-                    val repositoriosEncontrado = repository.pegaListaRepositorio(murilo)
-                    repositoriosEncontrado.collect { lista ->
-                        _uiState.update {
-                            TelaDeUsuarioUiState.Sucesso(
-                                usuario = usuario.usuarioParaView(),
-                                listaRepositorios = lista.map { lista ->
-                                    lista.mapperParaView()
-                                }
-                            )
-                        }
+                    val repositoriosEncontrado =
+                        repository.pegaListaRepositorio(murilo)
+                            .firstOrNull()
+                    _uiState.update {
+                        TelaDeUsuarioUiState.Sucesso(
+                            usuario = usuario.usuarioParaView(),
+                            listaRepositorios = repositoriosEncontrado?.map { lista ->
+                                lista.mapperParaView()
+                            } ?: emptyList()
+                        )
                     }
                 }
             }
