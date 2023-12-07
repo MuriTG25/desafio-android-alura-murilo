@@ -26,7 +26,7 @@ class TelaDeUsuarioViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<TelaDeUsuarioUiState>(
         TelaDeUsuarioUiState.Carregando
     )
-    private var atualUiStateJob: Job? = null
+    private var atualJob: Job? = null
     val uiState = _uiState.asStateFlow()
 
     init {
@@ -34,8 +34,8 @@ class TelaDeUsuarioViewModel @Inject constructor(
     }
 
     fun carregaUsuario() {
-        atualUiStateJob?.cancel()
-        atualUiStateJob = viewModelScope.launch {
+        atualJob?.cancel()
+        atualJob = viewModelScope.launch {
             repository.pegaUsuario(murilo).onStart {
                 _uiState.update {
                     TelaDeUsuarioUiState.Carregando
